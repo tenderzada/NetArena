@@ -179,10 +179,56 @@ Verify:  Execute action in environment, check desired state reached
     <p>All three tasks operate on wired networks and IT infrastructure. Wireless resource allocation, physical layer optimization, UAV trajectory planning, spectrum management, and network slicing are entirely absent. This is the gap we aim to fill.</p>
   </div>
 
+  <h3>App-Route: 路由故障排查</h3>
+  <div class="card">
+    <p>Agent 拿到一个用 Mininet 搭建的虚拟网络，网络里有一个路由配置错误导致某些主机之间不通。Agent 需要先读取网络状态（路由表、接口配置），判断哪里配错了，然后输出修复命令。评测端执行命令后检查 ping 是否恢复、路径是否正确。</p>
+<pre style="background:#f3f4f6; padding:0.75rem; border-radius:4px; font-size:0.8rem; margin-top:0.5rem;">
+输入：一个有故障的网络 + "H1 无法 ping 通 H3"
+输出：修复命令（比如修改某条静态路由的下一跳地址）
+验证：修复后 ping 成功 + 路由路径正确</pre>
+  </div>
+
+  <h3>App-MALT: 数据中心容量规划</h3>
+  <div class="card">
+    <p>Agent 拿到一个数据中心的拓扑图（用 networkx 图表示，包含交换机、端口、机架的层级关系），以及一条自然语言指令。Agent 需要生成 Python 代码来操作这个图，比如添加设备、删除端口、查询统计信息。评测端执行代码后，对比结果图和标准答案图。</p>
+<pre style="background:#f3f4f6; padding:0.75rem; border-radius:4px; font-size:0.8rem; margin-top:0.5rem;">
+输入：数据中心拓扑图 + "在 ju1.s4.dom 下添加一台交换机"
+输出：Python 代码（调用 networkx API 操作图）
+验证：执行代码，对比输出图与标准答案</pre>
+  </div>
+
+  <h3>App-K8s: Kubernetes 网络策略配置</h3>
+  <div class="card">
+    <p>Agent 拿到一个运行中的 K8s 集群，以及一条访问控制需求。Agent 需要生成 NetworkPolicy YAML 配置来实现 Pod 之间的网络隔离。评测端将配置应用到集群后，检查允许的流量能通、禁止的流量被拦截。</p>
+<pre style="background:#f3f4f6; padding:0.75rem; border-radius:4px; font-size:0.8rem; margin-top:0.5rem;">
+输入：K8s 集群 + "禁止 namespace-A 的 Pod 访问 namespace-B 的数据库"
+输出：NetworkPolicy YAML 文件
+验证：应用策略后，测试流量是否按预期通断</pre>
+  </div>
+
+  <h3>三个任务的共同模式</h3>
+  <div class="card">
+<pre style="background:#f3f4f6; padding:1rem; border-radius:6px; font-size:0.85rem; overflow-x:auto; line-height:1.7;">
+自然语言任务描述 + 网络环境当前状态
+        |
+        v
+Agent 理解目标 + 读取环境
+        |
+        v
+生成动作（代码 / 命令 / 配置文件）
+        |
+        v
+在环境中执行动作
+        |
+        v
+检查：正确性 + 安全性 + 响应时间</pre>
+    <p style="margin-top:0.75rem; font-size:0.9rem;">三个任务都是有线网络和 IT 基础设施。无线资源分配、UAV、频谱管理等方向完全没有覆盖。</p>
+  </div>
+
 </section>
 
 <section>
-  <h2>How NetArena MALT Works</h2>
+  <h2>How NetArena MALT Works (Detail)</h2>
 
   <div class="card">
     <div class="card-title">What is being evaluated?</div>
