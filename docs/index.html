@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NetArena Fork — Wireless Network Benchmark Exploration</title>
+<style>
+:root {
+  --bg: #fafafa;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --border: #e5e7eb;
+  --green: #059669;
+  --orange: #d97706;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+header { text-align: center; padding: 3rem 0 2rem; }
+header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+header p { color: var(--muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+.badges { margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+.badge-blue { background: var(--accent-light); color: var(--accent); }
+.badge-green { background: #ecfdf5; color: var(--green); }
+.badge-orange { background: #fffbeb; color: var(--orange); }
+
+section { margin-top: 2.5rem; }
+section h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+section h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+.card-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.card-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+.card p { font-size: 0.9rem; color: #374151; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+th { background: #f3f4f6; text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; border-bottom: 2px solid var(--border); }
+td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+tr:hover td { background: #f9fafb; }
+
+.status { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.status-done { background: #ecfdf5; color: var(--green); }
+.status-progress { background: #fffbeb; color: var(--orange); }
+.status-planned { background: #f3f4f6; color: var(--muted); }
+
+.timeline { position: relative; padding-left: 1.5rem; }
+.timeline::before { content: ''; position: absolute; left: 0.35rem; top: 0.5rem; bottom: 0.5rem; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: 1.5rem; }
+.timeline-item::before { content: ''; position: absolute; left: -1.15rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid white; }
+.timeline-date { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+.timeline-title { font-weight: 600; font-size: 0.95rem; margin: 0.15rem 0; }
+.timeline-desc { font-size: 0.85rem; color: #4b5563; }
+
+.screenshot { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin: 0.75rem 0; }
+.screenshot img { width: 100%; display: block; }
+.screenshot-caption { font-size: 0.8rem; color: var(--muted); padding: 0.5rem 0.75rem; background: #f9fafb; }
+
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--muted); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>NetArena Fork</h1>
+  <p>Exploring AI agent benchmarks for network automation, from reproduction to wireless domain extension</p>
+  <div class="badges">
+    <span class="badge badge-blue">NetArena (ICLR 2026)</span>
+    <span class="badge badge-green">MALT Reproduced</span>
+    <span class="badge badge-orange">Wireless Extension Planned</span>
+  </div>
+</header>
+
+<section>
+  <h2>Project Overview</h2>
+  <div class="card">
+    <p>This project forks <a href="https://github.com/Froot-NetSys/NetArena">NetArena</a> (ICLR 2026) to study how AI coding agents perform on network automation tasks. Our goal is to reproduce the existing benchmarks, analyze the framework design, and extend it to wireless network optimization tasks that are currently absent from all existing benchmarks.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Progress Timeline</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">Apr 16, 2026</div>
+      <div class="timeline-title">MALT Benchmark Reproduction</div>
+      <div class="timeline-desc">Successfully reproduced the MALT data center capacity planning benchmark using Qwen3.5-Flash via DashScope API. Agent generates valid Python code to manipulate network topology graphs.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Apr 16, 2026</div>
+      <div class="timeline-title">Competitor Analysis</div>
+      <div class="timeline-desc">Surveyed three main competitors: NetArena (Microsoft/UMD, ICLR 2026), NetLLMBench (TU Munich, IEEE 2025), LLM4NetLab (SIGCOMM 2025). All focus on wired L3 routing. Identified wireless optimization as the key gap.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Apr 16, 2026</div>
+      <div class="timeline-title">Task Taxonomy Survey</div>
+      <div class="timeline-desc">Cataloged 20 network configuration task types across 8 domains. Identified wireless tasks (power control, UAV trajectory, beamforming, spectrum management) as uncovered by existing benchmarks.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Apr 16, 2026</div>
+      <div class="timeline-title">Simulator Survey</div>
+      <div class="timeline-desc">Evaluated 12 network simulators for Docker compatibility. Top candidates: Containerlab (wired), mobile-env (wireless), UavNetSim (UAV), ns3-gym (full-stack wireless).</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Apr 14, 2026</div>
+      <div class="timeline-title">Lightweight Environment Setup</div>
+      <div class="timeline-desc">Created requirements_lite.txt removing local inference dependencies (vLLM, DeepSpeed, xformers). Reduced install from ~8GB to ~1GB for API-based evaluation.</div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>MALT Reproduction Results</h2>
+
+  <div class="card">
+    <div class="card-title">Configuration</div>
+    <table>
+      <tr><td>Benchmark</td><td>MALT (Data Center Capacity Planning)</td></tr>
+      <tr><td>Agent</td><td>Qwen3.5-Flash via DashScope</td></tr>
+      <tr><td>Server</td><td>Ubuntu 22.04, 40 cores, 62GB RAM, NVIDIA GPU</td></tr>
+      <tr><td>Complexity</td><td>Level 1, Level 2</td></tr>
+      <tr><td>Protocol</td><td>A2A (Agent-to-Agent)</td></tr>
+    </table>
+  </div>
+
+  <div class="screenshot">
+    <img src="results/malt_benchmark_start.png" alt="MALT Benchmark Started">
+    <div class="screenshot-caption">Benchmark evaluation started with MALT configuration</div>
+  </div>
+
+  <div class="screenshot">
+    <img src="results/malt_agent_response.png" alt="Agent Response">
+    <div class="screenshot-caption">Agent Server: Qwen3.5-Flash generating Python code for data center topology manipulation</div>
+  </div>
+</section>
+
+<section>
+  <h2>Existing Benchmark Landscape</h2>
+  <table>
+    <thead>
+      <tr><th>Benchmark</th><th>Venue</th><th>Tasks</th><th>Simulator</th><th>Domain</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="https://github.com/Froot-NetSys/NetArena">NetArena</a></td><td>ICLR 2026</td><td>Route, MALT, K8s</td><td>Mininet, Custom</td><td>Wired / IT</td></tr>
+      <tr><td><a href="https://github.com/tum-lkn/netllmbench">NetLLMBench</a></td><td>IEEE 2025</td><td>BGP, OSPF, Static</td><td>Containerlab + FRR</td><td>Wired L3</td></tr>
+      <tr><td><a href="https://github.com/zhihao1998/LLM4NetLab">LLM4NetLab</a></td><td>SIGCOMM 2025</td><td>Fault diagnosis</td><td>Containerlab + FRR</td><td>Wired L3</td></tr>
+    </tbody>
+  </table>
+  <div class="card">
+    <div class="card-title">Gap Identified</div>
+    <p>All three benchmarks focus exclusively on wired network configuration (L3 routing, data center, Kubernetes). No existing benchmark covers wireless network optimization tasks such as power control, UAV trajectory planning, beamforming, spectrum management, or network slicing.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Proposed Extension: Wireless Tasks</h2>
+  <table>
+    <thead>
+      <tr><th>Task</th><th>Domain</th><th>Difficulty</th><th>Simulator</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Power Control</td><td>Resource Allocation</td><td>Medium</td><td>Pure Python</td><td><span class="status status-planned">Planned</span></td></tr>
+      <tr><td>UAV Trajectory Optimization</td><td>Coverage</td><td>Hard</td><td>UavNetSim / Python</td><td><span class="status status-planned">Planned</span></td></tr>
+      <tr><td>Beamforming Design</td><td>Physical Layer</td><td>Hard</td><td>Pure Python</td><td><span class="status status-planned">Planned</span></td></tr>
+      <tr><td>Spectrum Management</td><td>Resource Allocation</td><td>Medium</td><td>Pure Python</td><td><span class="status status-planned">Planned</span></td></tr>
+      <tr><td>Network Slicing</td><td>Orchestration</td><td>Hard</td><td>Pure Python</td><td><span class="status status-planned">Planned</span></td></tr>
+      <tr><td>Energy-Efficient Scheduling</td><td>Green Networking</td><td>Medium</td><td>Pure Python</td><td><span class="status status-planned">Planned</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Related Work</h2>
+  <h3>Papers Referenced</h3>
+  <table>
+    <thead>
+      <tr><th>Paper</th><th>Venue</th><th>Relevance</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Intent-LLM (VipeeGPT)</td><td>IEEE TCCN 2025</td><td>LLM code generation for network config via Python API</td></tr>
+      <tr><td>LLM for Telecom Survey</td><td>IEEE COMST 2025</td><td>Comprehensive survey of LLM applications in telecom</td></tr>
+      <tr><td>PC-LLM</td><td>arXiv 2024</td><td>LLM for wireless power control</td></tr>
+      <tr><td>BeamAgent</td><td>arXiv 2025</td><td>LLM-aided MIMO beamforming</td></tr>
+      <tr><td>SIMCODE</td><td>arXiv 2025</td><td>NL to ns-3 simulation code benchmark</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Quick Start</h2>
+  <div class="card">
+    <div class="card-title">Reproduce MALT Benchmark</div>
+<pre style="background:#f3f4f6; padding:1rem; border-radius:6px; font-size:0.8rem; overflow-x:auto;">
+# Clone and setup
+git clone git@github.com:tenderzada/NetArena.git
+cd NetArena
+conda create -n netarena python=3.12 -y
+conda activate netarena
+pip install -e .
+pip install litellm loguru "a2a-sdk[http-server]" uvicorn cattrs tomli httpx jsonlines prototxt_parser scipy
+
+# Terminal 1: Start Agent Server
+export DASHSCOPE_API_KEY=sk-xxx
+python a2a_llm/litellm_a2a_server.py \
+  --model-name "openai/qwen3.5-flash" \
+  --api-key "$DASHSCOPE_API_KEY" \
+  --api-base-url "https://dashscope.aliyuncs.com/compatible-mode/v1" \
+  --host 127.0.0.1 --port 8000
+
+# Terminal 2: Run Benchmark
+cd app-malt
+cp config.template.toml config.toml
+python run.py --config config.toml
+</pre>
+  </div>
+</section>
+
+<footer>
+  <p>Fork of <a href="https://github.com/Froot-NetSys/NetArena">NetArena</a> (ICLR 2026) |
+     <a href="https://github.com/tenderzada/NetArena">GitHub Repo</a></p>
+</footer>
+
+</div>
+</body>
+</html>
